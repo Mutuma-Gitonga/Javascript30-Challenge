@@ -58,6 +58,36 @@
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
 <script>
+  // const soundKeys = document.querySelector(".keys");
+  // console.log(soundKeys);
+
+  playSound = (e) => {
+    // Select the audio files
+    const audioFile = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+    // Select the keys pressed
+    const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+    // console.log(key);
+    // console.log(audioFile);
+    if(!audioFile) return; // Stops function whenever other keys are pressed
+    audioFile.currentTime = 0; // Returns playback time to 0 secs (play in quick sucessn) 
+    audioFile.play();
+    key.classList.add('playing');
+  }
+
+  function removeTransition (e) {
+    // NB: propertyName "transform" marks the end of the animation
+    // console.log(this);
+      if(e.propertyName !== "transform") {return};
+    // console.log(e.propertyName);
+    // 'this' keyword = what it was called against. In this case, "key" next to ev
+    this.classList.remove('playing');
+  }
+
+  // Run through all keys simultaneously and check for transition end before reversing it
+  const keys = document.querySelectorAll(".key");
+  keys.forEach(key => key.addEventListener("transitionend", removeTransition));
+ 
+  window.addEventListener("keydown", playSound);
 
 </script>
 
