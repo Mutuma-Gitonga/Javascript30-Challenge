@@ -15,6 +15,7 @@
       </div>
     </div>
 
+    <!-- CLOCK TICK SOUND -->
     <audio class="tick" src="Sounds/tickSound.mp3"></audio>
 
   <style>
@@ -104,6 +105,8 @@
       secondHand.style.transform = `rotate(${secondsDegrees}deg)`;
       console.log(seconds);
       
+      // PLAY the tick sound
+      clockTick.play();
 
       // getting MINUTES count from the date object
       const minutes = now.getMinutes();
