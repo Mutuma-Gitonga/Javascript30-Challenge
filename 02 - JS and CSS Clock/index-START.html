@@ -77,9 +77,16 @@
     // Selecting the minute hand using DOM
     const minuteHand = document.querySelector(".min-hand"); 
 
+    // Selecting the hour hand using DOM
+    const hourHand = document.querySelector(".hour-hand");
+
     setDate = () => {
       // Calling the date object to get current time
       const now = new Date();
+
+      // // Changing hours to test the behavior accuracy of the hour hand
+      // const threeHoursLater = 3 * 60 * 60 * 1000;
+      // now.setTime(now.getTime() + threeHoursLater);
 
       // getting SECONDS count from date function
       const seconds = now.getSeconds();
@@ -95,7 +102,7 @@
       console.log(`Minute: ${minutes}`);
       // Converting minutes to representative degrees on the clock
       const minutesDegrees = ((minutes/60) * 360) + 90;
-      // Applying the changing minute degrees to clock min hand rotate style
+      // Applying the changing minute degrees to clock min hand transform-rotate style
       minuteHand.style.transform = `rotate(${minutesDegrees}deg)`;
       
       // getting HOURS count from the date object
@@ -104,6 +111,8 @@
       console.log(`Hour: ${hours}`);
       // Converting hours to representative degrees on the clock
       const hoursDegrees = ((hours/12) * 360) + 90;
+      // Applying the changing hour degrees to clock hour hand transform-rotate style
+      hourHand.style.transform = `rotate(${hoursDegrees}deg)`;
     }
 
     setInterval(() => setDate(), 1000);
