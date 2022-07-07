@@ -71,7 +71,9 @@
   </style>
 
   <script>
-    
+    //selecting the second hand using DOM
+    const secondHand = document.querySelector(".second-hand");
+
     setDate = () => {
       // Calling the date object to get current time
       const now = new Date();
@@ -79,6 +81,8 @@
       const seconds = now.getSeconds();
       // Converting seconds to representative degrees on the clock
       const secondsDegrees = ((seconds/60) * 360) + 90; //+90 ensures secs sync with second hand
+      secondHand.style.transform = `rotate(${secondsDegrees}deg)`;
+
       console.log(seconds);
     }
 
