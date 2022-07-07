@@ -62,12 +62,16 @@
       background: black;
       position: absolute;
       top: 50%;
+      transform-origin: 100%; /* Sets hand to rotate from its end instead of its midpt */
+      transform: rotate(90deg); /*Sets hand to start at 12 o'clock*/
+      transition: all 0.05s;
+      transition-timing-function: cubic-bezier(0.52, 2.5, 0.58, 1);
     }
 
   </style>
 
   <script>
-
+    
 
   </script>
 </body>
