@@ -15,6 +15,7 @@
       </div>
     </div>
 
+    <audio class="tick" src="Sounds/tickSound.mp3"></audio>
 
   <style>
     html {
@@ -80,6 +81,14 @@
     // Selecting the hour hand using DOM
     const hourHand = document.querySelector(".hour-hand");
 
+    // Selecting the "hand" class to remove the transition property
+    const transitionProp = document.querySelector(".hand");
+
+
+    // DOM - AUDIO SELECT
+    const clockTick = document.querySelector(".tick");
+
+
     setDate = () => {
       // Calling the date object to get current time
       const now = new Date();
@@ -92,9 +101,9 @@
       const seconds = now.getSeconds();
       // Converting seconds to representative degrees on the clock
       const secondsDegrees = ((seconds/60) * 360) + 90; //+90 ensures secs sync with second hand
-      // Applying degrees to move the second hand
       secondHand.style.transform = `rotate(${secondsDegrees}deg)`;
       console.log(seconds);
+      
 
       // getting MINUTES count from the date object
       const minutes = now.getMinutes();
@@ -113,9 +122,15 @@
       const hoursDegrees = ((hours/12) * 360) + 90;
       // Applying the changing hour degrees to clock hour hand transform-rotate style
       hourHand.style.transform = `rotate(${hoursDegrees}deg)`;
+
+      
     }
 
     setInterval(() => setDate(), 1000);
+
+    
+
+    
 
   </script>
 </body>
