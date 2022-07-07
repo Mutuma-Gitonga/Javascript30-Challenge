@@ -78,7 +78,7 @@
       // getting seconds count from date function
       const seconds = now.getSeconds();
       // Converting seconds to representative degrees on the clock
-      
+      const secondsDegrees = ((seconds/60) * 360) + 90; //+90 ensures secs sync with second hand
       console.log(seconds);
     }
 
