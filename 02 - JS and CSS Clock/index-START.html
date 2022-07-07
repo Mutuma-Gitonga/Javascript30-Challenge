@@ -77,13 +77,22 @@
     setDate = () => {
       // Calling the date object to get current time
       const now = new Date();
-      // getting seconds count from date function
+
+      // getting SECONDS count from date function
       const seconds = now.getSeconds();
       // Converting seconds to representative degrees on the clock
       const secondsDegrees = ((seconds/60) * 360) + 90; //+90 ensures secs sync with second hand
+      // Applying degrees to move the second hand
       secondHand.style.transform = `rotate(${secondsDegrees}deg)`;
-
       console.log(seconds);
+
+      // getting MINUTES count from the date object
+      const minutes = now.getMinutes();
+      // Printing to check functionality
+      console.log(`Minutes = ${minutes}`);
+      // Converting minutes to representative degrees on the clock
+      const minutesDegrees = ((minutes/60) * 360);
+
     }
 
     setInterval(() => setDate(), 1000);
