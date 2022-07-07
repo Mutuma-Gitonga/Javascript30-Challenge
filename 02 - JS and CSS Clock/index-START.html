@@ -71,8 +71,11 @@
   </style>
 
   <script>
-    //selecting the second hand using DOM
+    // selecting the second hand using DOM
     const secondHand = document.querySelector(".second-hand");
+
+    // Selecting the minute hand using DOM
+    const minuteHand = document.querySelector(".min-hand"); 
 
     setDate = () => {
       // Calling the date object to get current time
@@ -89,9 +92,11 @@
       // getting MINUTES count from the date object
       const minutes = now.getMinutes();
       // Printing to check functionality
-      console.log(`Minutes = ${minutes}`);
+      console.log(`Minute: ${minutes}`);
       // Converting minutes to representative degrees on the clock
-      const minutesDegrees = ((minutes/60) * 360);
+      const minutesDegrees = ((minutes/60) * 360) + 90;
+      // Applying the changing minute degrees to clock min hand rotate style
+      minuteHand.style.transform = `rotate(${minutesDegrees}deg)`;
 
     }
 
