@@ -23,7 +23,7 @@
   <style>
     /* CSS Variables declared on highest level CSS element (:root) -> setting default values */
     :root {
-      --baseColor: #ffc600;
+      --base: #ffc600;
       --spacing: 20px;
       --blur: 2px;
     }
@@ -31,13 +31,13 @@
     /* Styling the image element with declared variables */
     img {
       padding: var(--spacing);
-      background: var(--baseColor);
+      background: var(--base);
       filter: blur(var(--blur));
     }
 
-    /* Styling the headline "JS" with baseColor */
+    /* Styling the headline "JS" with base */
     .hl {
-      color: var(--baseColor);
+      color: var(--base);
     }
 
     /*
@@ -73,13 +73,19 @@
     
     // Function to update the values
     function handleUpdate() {
-     console.log(this.value);
+      // console.log(this.value);
+      // console.log(this.dataset); // dataset selects all attributes with prefix "data-" px
+      // Use dataset to obtain "px" to append to changing spacing & blur values
+      const suffix = this.dataset.sizing || ''; // '' -> ensures units r unattached to base
+      // console.log(this.name); //Shows elementName pointed at - spacing/blur/base
+      // Now updating the value
+      document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix);
     } 
 
     // Listen for change event
     inputs.forEach(input => input.addEventListener("change", handleUpdate));
     
-    // Listen for mouseover event
+    // Listen for mousemove event
     inputs.forEach(input => input.addEventListener("mousemove", handleUpdate));
 
   </script>
