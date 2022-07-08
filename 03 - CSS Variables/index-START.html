@@ -61,8 +61,27 @@
       width: 100px;
     }
   </style>
-
+    
   <script>
+    // JS code to change the CSS variable values
+    // Select all inputs:
+    const inputs = document.querySelectorAll(".controls input");
+    // console.log(inputs);
+
+    // Arrow function is not suitable when requiring 'this' to return a value:
+    // const handleUpdate = () => console.log(this.value);
+    
+    // Function to update the values
+    function handleUpdate() {
+     console.log(this.value);
+    } 
+
+    // Listen for change event
+    inputs.forEach(input => input.addEventListener("change", handleUpdate));
+    
+    // Listen for mouseover event
+    inputs.forEach(input => input.addEventListener("mousemove", handleUpdate));
+
   </script>
 
 </body>
