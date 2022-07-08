@@ -24,8 +24,15 @@
     /* CSS Variables declared on highest level CSS element (:root) -> setting default values */
     :root {
       --baseColor: #ffc600;
-      --spacing: 10px;
-      --blur: 10px;
+      --spacing: 20px;
+      --blur: 2px;
+    }
+
+    /* Styling the image element with declared variables */
+    img {
+      padding: var(--spacing);
+      background: var(--baseColor);
+      filter: blur(var(--blur));
     }
 
     /*
