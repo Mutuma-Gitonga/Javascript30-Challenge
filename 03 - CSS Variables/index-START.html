@@ -18,8 +18,8 @@
     <input id="base" type="color" name="base" value="#ffc600">
 
     <!-- MY ADDITION: SLIDER TO ROTATE THE IMAGE -->
-    <label for="angle">Rotation Angle</label>
-    <input type="range" name="angle" min="0" max="360" value="0" data-value="deg">
+    <label for="angle">Rotation Angle:</label>
+    <input id="angle" type="range" name="angle" min="0" max="360" value="0" data-value="deg">
   </div>
 
   <img src="https://source.unsplash.com/7bwQXzbF6KE/800x500">
@@ -41,7 +41,7 @@
       filter: blur(var(--blur));
       /* MY ADDITION: CSS OBJECT ROTATION STYLES AND PROPERTIES */
       transform: rotate(var(--angle));
-      transform-origin: 25%;
+      transform-origin: 50%;
     }
 
     /* Styling the headline "JS" with base */
@@ -85,13 +85,20 @@
     
     // Function to update the values
     function handleUpdate() {
-      // console.log(this.value);
-      // console.log(this.dataset); // dataset selects all attributes with prefix "data-" px
+      console.log(this.value);
+      // console.log(this.dataset); // dataset selects all attributes with prefix "data-" i.e., px & deg
       // Use dataset to obtain "px" to append to changing spacing & blur values
-      const suffix = this.dataset.sizing || ''; // '' -> ensures units r unattached to base
-      // console.log(this.name); //Shows elementName pointed at - spacing/blur/base
+      const suffix = this.dataset.sizing || ''; // '' -> ensures units remain unattached to base
+      // Use dataset to obtain "deg" to append to changing rotation angle values
+      const rotationAngleSuffix = this.dataset.value || '';
+      // console.log(this.name); //Shows elementName pointed at - spacing/blur/base/angle
       // Now updating the value
-      document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix);
+      if (this.dataset.sizing === 'px' || this.dataset.sizing === '') {
+        document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix);
+      } else {
+        document.documentElement.style.setProperty(`--${this.name}`, this.value + rotationAngleSuffix);
+      }
+      
     } 
 
     // Listen for change event
