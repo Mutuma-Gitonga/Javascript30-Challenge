@@ -16,6 +16,10 @@
 
     <label for="base">Base Color</label>
     <input id="base" type="color" name="base" value="#ffc600">
+
+    <!-- MY ADDITION: SLIDER TO ROTATE THE IMAGE -->
+    <label for="angle">Rotation Angle</label>
+    <input type="range" name="angle" min="0" max="360" value="0" data-value="deg">
   </div>
 
   <img src="https://source.unsplash.com/7bwQXzbF6KE/800x500">
@@ -26,6 +30,8 @@
       --base: #ffc600;
       --spacing: 20px;
       --blur: 2px;
+      /* MY ADDITION: IMAGE ROTATION DEGREE */
+      --angle: 0deg;
     }
 
     /* Styling the image element with declared variables */
@@ -33,6 +39,9 @@
       padding: var(--spacing);
       background: var(--base);
       filter: blur(var(--blur));
+      /* MY ADDITION: CSS OBJECT ROTATION STYLES AND PROPERTIES */
+      transform: rotate(var(--angle));
+      transform-origin: 25%;
     }
 
     /* Styling the headline "JS" with base */
