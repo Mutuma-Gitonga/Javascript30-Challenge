@@ -42,6 +42,8 @@
       /* MY ADDITION: CSS OBJECT ROTATION STYLES AND PROPERTIES */
       transform: rotate(var(--angle));
       transform-origin: 50%;
+      position: relative; /* Necessary for the z-index to work */
+      z-index: -1; /* Sets the image to fall behind the controls div to avoid masking it.*/
     }
 
     /* Styling the headline "JS" with base */
